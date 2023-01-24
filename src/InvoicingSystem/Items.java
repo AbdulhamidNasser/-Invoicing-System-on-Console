@@ -1,6 +1,8 @@
 package InvoicingSystem;
 
-public class Items {
+import java.io.Serializable;
+
+public class Items implements Serializable{
 	
 	String itemName;
 	int itemID;

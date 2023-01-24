@@ -1,5 +1,7 @@
 package InvoicingSystem;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 
@@ -10,8 +12,8 @@ public class Menu {
 		
 		Scanner sc = new Scanner(System.in);
 	Invoice invoiceobj = new Invoice();
-	System.out.println("Please Enter Your Shop Name : ");
-	invoiceobj.shopObj.setShopName(sc.nextLine());
+	//System.out.println("Please Enter Your Shop Name : ");
+	//invoiceobj.shopObj.setShopName(sc.nextLine());
 	System.out.println("Application Main Menu : ");
 	System.out.println("1-Shop Settings");
 	System.out.println("2- Manage Shop Items");
@@ -35,7 +37,9 @@ public class Menu {
 	    	System.out.println("1. Load Data");
 	    	break;
 	    case 2:
-	    	System.out.println("2. Set Shop Name");
+	    	System.out.println("Please Enter Your Shop Name : ");
+	    	invoiceobj.shopObj.setShopName(sc.nextLine());
+	    	
 	    	break;
 	    	
 	    case 3:
@@ -43,8 +47,10 @@ public class Menu {
 	    	break;
 
 	    case 4:
+	    	
 	    	System.out.println("4. Go Back");
 	    	break;
+	    	
 	    }
 	    
 	  case 2:
@@ -56,9 +62,31 @@ public class Menu {
 		    
 		    switch (sc.nextInt()) {
 		    case 1:
-		    	System.out.println("1. Add Items");
+		    	try{    
+		    		         
+		    	Items itemN = new Items();
+		    	FileOutputStream fout=new FileOutputStream("item.txt");    
+	    		  ObjectOutputStream out=new ObjectOutputStream(fout); 
+		    	System.out.println("Enter Items Name");
+		    	itemN.setItemName(sc.nextLine());
+		    	System.out.println("Enter Items ID");
+		    	itemN.setItemID(sc.nextInt());
+		    	System.out.println("Enter Number of Quantity");
+		    	itemN.setQuantity(sc.nextInt());
+		    	System.out.println("Enter Unit Price");
+		    	itemN.setUnitPrice(sc.nextDouble());
+		    	System.out.println("Enter Quantity Amount");
+		    	itemN.setQtyAmountPrice(sc.nextDouble());
+		    	invoiceobj.shopObj.itemList.add(itemN);
+		    	 out.writeObject(itemN);    
+		    	  out.flush();    
+		    	      
+		    	  out.close();    
+		    	  System.out.println("success");    
+		    	  }catch(Exception e){System.out.println(e);}  
 		    	break;
 		    case 2:
+		    	
 		    	System.out.println("2. Delete Item");
 		    	break;
 		    	
