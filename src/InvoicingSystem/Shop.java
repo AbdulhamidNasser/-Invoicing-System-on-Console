@@ -22,7 +22,7 @@ public class Shop {
 	  public int getTel() {
 		    return tel;
 		  }
-		  public void setShopName(int newTel) {
+		  public void setTel(int newTel) {
 		    this.tel = newTel;
 		  }
 		  

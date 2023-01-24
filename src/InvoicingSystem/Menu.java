@@ -43,7 +43,22 @@ public class Menu {
 	    	break;
 	    	
 	    case 3:
-	    	System.out.println("3. Set Invoice Header ");
+	    	try{    
+		         
+		    	
+	    	System.out.println(" Set Invoice Header ");
+	    	System.out.println("Enter Shop Phone Number");
+	    	invoiceobj.shopObj.setTel(sc.nextInt());
+	    	System.out.println("Enter Shop Fax Number");
+	    	invoiceobj.shopObj.setFax(sc.nextInt());
+	    	System.out.println("Enter Shop Email ");
+	    	invoiceobj.shopObj.setEmail(sc.nextLine());
+	    	System.out.println("Enter Shop Website");
+	    	invoiceobj.shopObj.setWebsite(sc.nextLine());
+	    	
+	    	
+	    	
+	    	}catch(Exception e){System.out.println(e);} 
 	    	break;
 
 	    case 4:
