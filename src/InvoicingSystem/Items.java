@@ -49,5 +49,7 @@ public class Items implements Serializable{
 					  public void setQtyAmountPrice(double newQtyAmountPrice) {
 					    this.qtyAmountPrice = newQtyAmountPrice;
 					  }
+					  
+					  
 
 }

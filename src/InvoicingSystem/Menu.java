@@ -1,6 +1,8 @@
 package InvoicingSystem;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
@@ -14,6 +16,9 @@ public class Menu {
 	Invoice invoiceobj = new Invoice();
 	//System.out.println("Please Enter Your Shop Name : ");
 	//invoiceobj.shopObj.setShopName(sc.nextLine());
+	Boolean as = true;
+	while(as)
+	{
 	System.out.println("Application Main Menu : ");
 	System.out.println("1-Shop Settings");
 	System.out.println("2- Manage Shop Items");
@@ -25,20 +30,24 @@ public class Menu {
 	System.out.println("8- Exit");
 	
 	int menuCase = sc.nextInt();
+	
 	switch (menuCase) {
 	  case 1:
+		 
 	    System.out.println("1. Load Data");
 	    System.out.println("2. Set Shop Name");
 	    System.out.println("3. Set Invoice Header ");
 	    System.out.println("4. Go Back");
 	    
+	    Boolean dd = true;
+		while(dd) {
 	    switch (sc.nextInt()) {
 	    case 1:
 	    	System.out.println("1. Load Data");
 	    	break;
 	    case 2:
 	    	System.out.println("Please Enter Your Shop Name : ");
-	    	invoiceobj.shopObj.setShopName(sc.nextLine());
+	    	invoiceobj.shopObj.setShopName(sc.next());
 	    	
 	    	break;
 	    	
@@ -52,9 +61,9 @@ public class Menu {
 	    	System.out.println("Enter Shop Fax Number");
 	    	invoiceobj.shopObj.setFax(sc.nextInt());
 	    	System.out.println("Enter Shop Email ");
-	    	invoiceobj.shopObj.setEmail(sc.nextLine());
+	    	invoiceobj.shopObj.setEmail(sc.next());
 	    	System.out.println("Enter Shop Website");
-	    	invoiceobj.shopObj.setWebsite(sc.nextLine());
+	    	invoiceobj.shopObj.setWebsite(sc.next());
 	    	
 	    	
 	    	
@@ -62,10 +71,12 @@ public class Menu {
 	    	break;
 
 	    case 4:
-	    	
-	    	System.out.println("4. Go Back");
+	    	as = true;
 	    	break;
 	    	
+	    
+	    
+	}
 	    }
 	    
 	  case 2:
@@ -83,7 +94,7 @@ public class Menu {
 		    	FileOutputStream fout=new FileOutputStream("item.txt");    
 	    		  ObjectOutputStream out=new ObjectOutputStream(fout); 
 		    	System.out.println("Enter Items Name");
-		    	itemN.setItemName(sc.nextLine());
+		    	itemN.setItemName(sc.next());
 		    	System.out.println("Enter Items ID");
 		    	itemN.setItemID(sc.nextInt());
 		    	System.out.println("Enter Number of Quantity");
@@ -98,14 +109,28 @@ public class Menu {
 		    	      
 		    	  out.close();    
 		    	  System.out.println("success");    
-		    	  }catch(Exception e){System.out.println(e);}  
+		    	  }catch(Exception e){System.out.println(e);}
 		    	break;
-		    case 2:
+		    	/* try{    
+		    		  ObjectInputStream in=new ObjectInputStream(new FileInputStream("item.txt"));    
+		    		  Items i=(Items)in.readObject();    
+		    		  System.out.println(i.itemList+"Out Put ");       
+		    		  in.close();    
+		    		  }catch(Exception e){System.out.println(e);}    */
 		    	
-		    	System.out.println("2. Delete Item");
+		    case 2:
+		    	System.out.println("Enter Name of Item Need to Deleted");
+		    	String itemNameRemove = sc.next();
+		    	invoiceobj.shopObj.remove(itemNameRemove);
+		    	
 		    	break;
 		    	
 		    case 3:
+		    	System.out.println("Enter Item Name Need to Change Price");
+		    	String iName = sc.next();
+		    	System.out.println("Enter Neew Price ");
+		    	double newUnitPrice = sc.nextDouble();
+		    	invoiceobj.shopObj.changeItemPrice(iName,  newUnitPrice);
 		    	System.out.println("3. Change Item Price");
 		    	break;
 
@@ -114,7 +139,8 @@ public class Menu {
 		    	break;
 		    	
 		    case 5:
-		    	System.out.println("4. Go Back");
+		    	as=true;
+		    	
 		    	break;
 		    }
 		    
@@ -139,12 +165,23 @@ public class Menu {
 		    break;
 		    
 		  case 8:
-			    System.out.println("");
-			    break;
+			    System.out.println("Are you sure you want to exit?  Yes Or No");
+			    String exit =sc.next();
+			    if(exit.equals("yes")) 
+			    {
+			    	return;
+			    }
+			    else
+			    {
+			    	as=true;
+			    	
+			    }
+	
+			   break;
 		}
 		
 
-		
+	}
 	
 	
 	
