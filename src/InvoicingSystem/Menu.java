@@ -14,6 +14,7 @@ public class Menu {
 		
 		Scanner sc = new Scanner(System.in);
 	Invoice invoiceobj = new Invoice();
+	Items itemN = new Items();
 	//System.out.println("Please Enter Your Shop Name : ");
 	//invoiceobj.shopObj.setShopName(sc.nextLine());
 	Boolean as = true;
@@ -44,6 +45,25 @@ public class Menu {
 	    switch (sc.nextInt()) {
 	    case 1:
 	    	System.out.println("1. Load Data");
+	    	System.out.println("Your Shop Name : "+invoiceobj.shopObj.getShopName());
+	    	System.out.println("Your Shop Phone Number : "+invoiceobj.shopObj.getTel());
+	    	System.out.println("Your Shop Fax Number : "+invoiceobj.shopObj.getFax());
+	    	System.out.println("Your Shop Email : "+invoiceobj.shopObj.getEmail());
+	    	System.out.println("Your Shop Website : "+invoiceobj.shopObj.getWebsite());
+	    	System.out.println("Your Item Name : "+itemN.getItemName());
+	    	System.out.println("Your Item ID : "+itemN.getItemID());
+	    	System.out.println("Your Item Quantity : "+itemN.getQuantity());
+	    	System.out.println("Your Item Unit Price : "+itemN.getUnitPrice());
+	    	System.out.println("Your Item Quantity Amount/Price : "+itemN.getQtyAmountPrice());
+	    	System.out.println("Your Invoice Date : "+invoiceobj.getInvoiceDate());
+	    	System.out.println("Number Of Items : "+invoiceobj.getNumberOfItems());
+	    	System.out.println("Total Amount : "+invoiceobj.getTotalAmount());
+	    	System.out.println("Paid Amount : "+invoiceobj.getPaidAmount());
+	    	System.out.println("Balance : "+invoiceobj.getBalance());
+	    	
+	    	
+	    	
+	    	
 	    	break;
 	    case 2:
 	    	System.out.println("Please Enter Your Shop Name : ");
@@ -90,7 +110,7 @@ public class Menu {
 		    case 1:
 		    	try{    
 		    		         
-		    	Items itemN = new Items();
+		    	//Items itemN = new Items();
 		    	FileOutputStream fout=new FileOutputStream("item.txt");    
 	    		  ObjectOutputStream out=new ObjectOutputStream(fout); 
 		    	System.out.println("Enter Items Name");
@@ -146,6 +166,16 @@ public class Menu {
 		    
 	  case 3:
 		    System.out.println("");
+		    System.out.println("Enter Invoice Date");
+	    	invoiceobj.setInvoiceDate(sc.next());
+	    	System.out.println("Enter Number Of Items");
+	    	invoiceobj.setNumberOfItems(sc.nextInt());
+	    	System.out.println("Enter Total Amount");
+	    	invoiceobj.setTotalAmount(sc.nextDouble());
+	    	System.out.println("Enter Paid Amount");
+	    	invoiceobj.setPaidAmount(sc.nextDouble());
+	    	System.out.println("Enter Balance");
+	    	invoiceobj.setBalance(sc.nextDouble());
 		    break;
 		    
 		  case 4:
