@@ -5,6 +5,7 @@ package InvoicingSystem;
 public class Invoice {
 	
 	 String invoiceDate;
+	 int invoiceNo;
 	 int numberOfItems;
 	 double totalAmount;
 	 double paidAmount;
@@ -17,6 +18,13 @@ public class Invoice {
 		    this.invoiceDate = newInvoiceDate;
 		  }
 		  
+		  public int getinvoiceNo() {
+			    return invoiceNo;
+			  }
+			  public void setInvoiceNo(int newInvoiceNo) {
+			    this.invoiceNo = newInvoiceNo;
+			  }
+			  
 		  
 		  public int getNumberOfItems() {
 			    return numberOfItems;

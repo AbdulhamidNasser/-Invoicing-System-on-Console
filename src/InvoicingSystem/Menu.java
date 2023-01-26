@@ -15,6 +15,8 @@ public class Menu {
 		Scanner sc = new Scanner(System.in);
 	Invoice invoiceobj = new Invoice();
 	Items itemN = new Items();
+	Customer customerobj = new Customer();
+	
 	//System.out.println("Please Enter Your Shop Name : ");
 	//invoiceobj.shopObj.setShopName(sc.nextLine());
 	Boolean as = true;
@@ -168,6 +170,8 @@ public class Menu {
 		    System.out.println("");
 		    System.out.println("Enter Invoice Date");
 	    	invoiceobj.setInvoiceDate(sc.next());
+	    	System.out.println("Enter Invoice No");
+	    	invoiceobj.setInvoiceNo(sc.nextInt());
 	    	System.out.println("Enter Number Of Items");
 	    	invoiceobj.setNumberOfItems(sc.nextInt());
 	    	System.out.println("Enter Total Amount");
@@ -180,18 +184,30 @@ public class Menu {
 		    
 		  case 4:
 		    System.out.println("");
+	    	System.out.println("Your Item Quantity : "+itemN.getQuantity());
+			
 		    break;
 		    
 		  case 5:
 		    System.out.println("");
+	    	System.out.println("Your Invoice Date : "+invoiceobj.getInvoiceDate());
+	    	System.out.println("Your Invoice Date : "+customerobj.getcoustomerFName());
+	    	System.out.println("Number Of Items : "+invoiceobj.getNumberOfItems());
+	    	System.out.println("Total Amount : "+invoiceobj.getTotalAmount());
+	    	System.out.println("Balance : "+invoiceobj.getBalance());
+	    	
+
 		    break;
 		    
 		  case 6:
 		    System.out.println("");
+		
+				
 		    break;
 		    
 		  case 7:
 		    System.out.println("");
+		    
 		    break;
 		    
 		  case 8:
